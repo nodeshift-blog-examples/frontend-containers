@@ -1,0 +1,1 @@
+to_entries | map_values({ (.key) : ("$" + .key) }) | reduce .[] as $item ({}; . + $item)
