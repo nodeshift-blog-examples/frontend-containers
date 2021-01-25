@@ -264,7 +264,13 @@ docker run -d -p 8080:80 --rm --name front -e ENV=prod -e BASE_URL=/api frontend
 ```
 
 ## Summary
-In summary, start by creating a 
+In short, here are the steps to make your environment variables accessible in your front-end container.
 
+* Add a [config.json](https://github.com/joellord/frontend-containers/blob/main/config.json) file in your /src folder.
+* Add the [start-nginx.sh](https://github.com/joellord/frontend-containers/blob/main/start-nginx.sh) bash script to your project
+* Use the following [Dockerfile](https://github.com/joellord/frontend-containers/blob/main/Dockerfile) to build your project
+* Start your container using -e to specify the environment variables.
 
-All of this might look like a lot of hoops to jump through in order to get environment variables working in your front end. And that is somewhat right. The good news now is that you can reuse that exact same Dockerfile for any of your JavaScript projects. All the variables in the config.json are automatically changed and you don't need to think about it anymore. 
+Now that you've got all of this, you can reuse that exact same Dockerfile for any of your JavaScript projects. All the variables in the config.json are automatically changed and you don't need to think about it anymore. 
+
+All the source code and examples for all three major front-end frameworks (Angular, React, Vue) can be found on [Github](https://github.com/joellord/frontend-containers).
