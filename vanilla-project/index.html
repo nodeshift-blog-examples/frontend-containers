@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>Vanilla HTML/JS</title>
+  </head>
+  <body>
+    <p>Base Url: <span id="baseUrl"></span></p>
+    <p>Environment: <span id="env"></span></p>
+  </body>
+  <script src="./config.js"></script>
+  <script type="text/javascript">
+  document.querySelector("#baseUrl").innerText = config.BASE_URL;
+  document.querySelector("#env").innerText = config.ENV;
+  </script>
+</html>

@@ -1,0 +1,19 @@
+FROM nginx:1.17
+COPY ./nginx.conf /etc/nginx/nginx.conf
+RUN mkdir -p /opt/app && chown -R nginx:nginx /opt/app && chmod -R 755 /opt/app
+RUN chown -R nginx:nginx /var/cache/nginx && \
+   chown -R nginx:nginx /var/log/nginx && \
+   chown -R nginx:nginx /etc/nginx/conf.d
+RUN touch /var/run/nginx.pid && \
+   chown -R nginx:nginx /var/run/nginx.pid  
+RUN chgrp -R root /var/cache/nginx /var/run /var/log/nginx /var/run/nginx.pid && \
+   chmod -R 775 /var/cache/nginx /var/run /var/log/nginx /var/run/nginx.pid
+USER nginx
+WORKDIR /opt/app
+COPY --chown=nginx ./index.html ./index.html
+COPY --chown=nginx ./config.js ./config.js
+RUN chmod -R ugo+rw /opt/app
+EXPOSE 8080
+RUN sed s/BASE_URL\:\ \"[a-zA-Z0-9:\/]*\"/BASE_URL\:\ \"\$BASE_URL\"/g ./config.js > ./config.new.js && mv ./config.new.js ./config.js
+RUN sed s/ENV\:\ \"[a-zA-Z0-9:\/]*\"/ENV\:\ \"\$ENV\"/g ./config.js > ./config.new.js && mv ./config.new.js ./config.js
+ENTRYPOINT cat config.js |  envsubst | tee config.new.js && mv config.new.js config.js && nginx -g 'daemon off;'
