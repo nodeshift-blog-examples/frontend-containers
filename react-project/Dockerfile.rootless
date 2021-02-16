@@ -27,6 +27,6 @@ RUN chmod +x /usr/bin/start-nginx.sh
 EXPOSE 8080
 WORKDIR /opt/app
 COPY --from=0 --chown=nginx /app/build .
-RUN chmod a+rw /opt/app/static/js/*.js
+RUN chmod -R a+rw /opt/app
 USER nginx
 ENTRYPOINT [ "start-nginx.sh" ]

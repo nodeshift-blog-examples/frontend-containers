@@ -31,7 +31,6 @@ RUN chmod +x /usr/bin/start-nginx.sh
 
 EXPOSE 8080
 
-USER nginx
 WORKDIR /opt/app
 # Angular
 # COPY --from=0 --chown=nginx /app/dist/<projectName> .
@@ -39,4 +38,6 @@ WORKDIR /opt/app
 # COPY --from=0 --chown=nginx /app/build .
 # VueJS
 # COPY --from=0 --chown=nginx /app/dist .
+RUN chmod -R a+rw /opt/app
+USER nginx
 ENTRYPOINT [ "start-nginx.sh" ]
