@@ -265,11 +265,11 @@ docker run -d -p 8080:80 --rm --name front -e ENV=prod -e BASE_URL=/api frontend
 ## Summary
 In short, here are the steps to make your environment variables accessible in your front-end container.
 
-* Add a [config.json](https://github.com/joellord/frontend-containers/blob/main/config.json) file in your /src folder.
-* Add the [start-nginx.sh](https://github.com/joellord/frontend-containers/blob/main/start-nginx.sh) bash script to your project
-* Use the following [Dockerfile](https://github.com/joellord/frontend-containers/blob/main/Dockerfile) to build your project
+* Add a [config.json](https://github.com/nodeshift-blog-examples/frontend-containers/blob/main/config.json) file in your /src folder.
+* Add the [start-nginx.sh](https://github.com/nodeshift-blog-examples/frontend-containers/blob/main/start-nginx.sh) bash script to your project
+* Use the following [Dockerfile](https://github.com/nodeshift-blog-examples/frontend-containers/blob/main/Dockerfile) to build your project
 * Start your container using -e to specify the environment variables.
 
 Now that you've got all of this, you can reuse that same Dockerfile for any of your JavaScript projects. All the variables in the config.json are automatically changed, and you don't need to think about it anymore. 
 
-You can find all the source code and examples for all three major front-end frameworks (Angular, React, Vue) on [Github](https://github.com/joellord/frontend-containers).
+You can find all the source code and examples for all three major front-end frameworks (Angular, React, Vue) on [Github](https://github.com/nodeshift-blog-examples/frontend-containers).
