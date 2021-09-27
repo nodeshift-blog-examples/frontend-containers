@@ -203,4 +203,4 @@ docker run -d -p 8080:8080 --rm --name front -e ENV=prod -e BASE_URL=/api fronte
 ```
 
 ## Summary
-You now have everything you need to run your JavaScript front-end in a secure container. You can reuse this image for all of your projects, whether using Angular, React or Vue. It is not only running securely but also lets you inject your environment variables into your code. You will find all the examples and source code on [Github](http://github.com/joellord/frontend-containers).
+You now have everything you need to run your JavaScript front-end in a secure container. You can reuse this image for all of your projects, whether using Angular, React or Vue. It is not only running securely but also lets you inject your environment variables into your code. You will find all the examples and source code on [Github](http://github.com/nodeshift-blog-examples/frontend-containers).
